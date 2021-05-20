@@ -1,0 +1,35 @@
+{
+  "name": "nextjs-boilerplate",
+  "version": "0.1.1",
+  "description": "This is a boilerplate to get started with a Dockerized Next.js application",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "build": "next build",
+    "production": "next build && next start",
+    "telemetry-optout": "next telemetry disable"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "axios": "^0.21.1",
+    "cookie": "^0.4.1",
+    "ethers": "^5.1.4",
+    "jsonwebtoken": "^8.5.1",
+    "next": "^10.0.5",
+    "next-i18next": "^7.0.1",
+    "notistack": "^1.0.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "swr": "^0.4.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.1",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "react-test-renderer": "^17.0.1"
+  }
+}

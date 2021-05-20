@@ -3,8 +3,7 @@ FROM node:14.5.0-slim
 MAINTAINER YOUR_NAME "YOUR@EMAIL.COM"
 
 # Perform image upgrades to satisfy security policy
-RUN apt-get -y update
-RUN apt-get -y upgrade
+RUN apt-get -y update && apt-get -y upgrade
 
 RUN mkdir -p /app
 WORKDIR /app

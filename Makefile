@@ -6,7 +6,7 @@
 # Self-documentation trick (https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html)
 help: ## This help (default)
 	@echo
-	@echo "Docker-ready Next.js Boilerplate"
+	@echo "Decredex Next.js Application"
 	@echo
 	@echo "Options:"
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9_-]+:.*?## / {printf "\033[36m%-24s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -18,16 +18,16 @@ help: ## This help (default)
 #############################
 
 build: ## Rebuild all images
-	-docker build -f Dockerfile -t app .
+	-docker build -f Dockerfile -t decredex-portal .
 	@echo "=== Build finished ===\n"
 
 build-fresh: build-clean build ## Clean and build fresh all images
 
 build-clean: ## Clean up all the images
 	@echo "Removing existing containers..."
-	-docker rm -vlf app
+	-docker rm -vlf decredex-portal
 	@echo "Removing base and main images..."
-	-docker rmi -f app
+	-docker rmi -f decredex-portal
 	@echo "=== Clean finished ===\n"
 
 
@@ -37,16 +37,17 @@ build-clean: ## Clean up all the images
 
 dev: ## Run local dev instance
 	@echo "=== Running local dev instance ===\n"
+	-npm install
 	-npm run dev
 
 prod: build ## Run docker prod instance
 	@echo "=== Running docker prod instance ===\n"
-	-docker run --rm -p 3000:3000 app npm run production
+	-docker run --rm -p 3000:3000 decredex-portal npm run production
 
 tests: build ## Run test suite
 	@echo "=== Running local prod instance ===\n"
-	-docker run --rm app npm run test
+	-docker run --rm decredex-portal npm run test
 
 coverage: build ## Run coverage suite
 	@echo "=== Running local prod instance ===\n"
-	-docker run --rm app npm run coverage
+	-docker run --rm decredex-portal npm run coverage

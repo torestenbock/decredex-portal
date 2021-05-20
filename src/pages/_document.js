@@ -16,7 +16,7 @@ class BaseDocument extends Document {
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
           {process.env.NODE_ENV === 'Production' && process.env.APP_ENV === "Production" && (
             // PUT ANY HEADER CODE HERE SUCH AS WEB ANALYTICS OR OTHER SCRIPTS TO BE LOADED IN PRODUCTION
-            "Next.js Boilerplate"
+            "Decredex"
           )}
         </Head>
         <body>

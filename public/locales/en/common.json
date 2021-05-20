@@ -1,7 +1,7 @@
 {
-  "title": "Next.js 'Boilerplate'",
-  "message": "Starting point for a great application",
-  "made-by": "Made by",
+  "title": "Decredex",
+  "message": "The decentralized academic credit exchange",
+  "made-by": "A demo made by",
   "toast-demo": "Show notification",
   "toast-demo-message": "Hello World"
 }

@@ -1,7 +1,6 @@
 {
-  "name": "nextjs-boilerplate",
+  "name": "decredex-portal",
   "version": "0.1.1",
-  "description": "This is a boilerplate to get started with a Dockerized Next.js application",
   "private": true,
   "scripts": {
     "dev": "next",

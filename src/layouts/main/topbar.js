@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Router from 'next/router'
 
 import { useSnackbar } from 'notistack'
+import { useAppContext } from 'context'
 import { useTranslation } from 'i18n'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -16,7 +17,7 @@ import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountIcon from '@material-ui/icons/AccountCircle'
-import ProfileMenuIcon from '@material-ui/icons/ArrowDropDown'
+import LogoutIcon from '@material-ui/icons/ExitToApp'
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined'
 
 
@@ -47,9 +48,19 @@ const Topbar = (props) => {
   const classes = useStyles()
   const {changeOpenSidebar} = props
   const {enqueueSnackbar} = useSnackbar()
+  const [context, dispatch] = useAppContext()
   const [t, i18n] = useTranslation(['common', 'topbar'])
 
+  const handleLogout = (event) => {
+    event.preventDefault()
 
+    enqueueSnackbar(t("common:logged-out"), { variant: 'success' })
+    dispatch({
+      type: "CHANGE_ACCOUNT",
+      value: null
+    })
+    Router.push('/')
+  }
 
   return (
     <AppBar className={classes.appbar} color='primary' position='fixed'>
@@ -65,24 +76,18 @@ const Topbar = (props) => {
         </Hidden>
 
         <Typography variant="h6">
-          {t('topbar:title')}
+          {t('topbar:title')} for {context.account?.name.slice(0, -2)}s
         </Typography>
 
         <div className={classes.flexGrow} />
 
-        <IconButton color='inherit'>
-          <Badge badgeContent={0} color='secondary'>
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-
         <div
           className={classes.profile}
-          onClick={(event) => console.log("Hellow World")}>
-          <Typography color="inherit">
-            PROFILE
+          onClick={(event) => handleLogout(event)}>
+          <Typography color="inherit" style={{marginRight: '8px'}}>
+            {t('common:logout')}
           </Typography>
-          <ProfileMenuIcon color='inherit' />
+          <LogoutIcon color='inherit' />
         </div>
 
       </Toolbar>

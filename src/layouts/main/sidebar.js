@@ -74,7 +74,6 @@ const Sidebar = (props) => {
         <List className={classes.nav}>
           <ListItem button
             className={classes.listItem}
-            onClick={() => router.push('/')}
             selected={router.pathname.includes('/')}>
             <ListItemIcon> <DashboardIcon /> </ListItemIcon>
             <ListItemText primary={t("sidebar:navigation.dashboard")} />

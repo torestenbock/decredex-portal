@@ -2,6 +2,25 @@
   "title": "Decredex",
   "message": "The decentralized academic credit exchange",
   "made-by": "A demo made by",
-  "toast-demo": "Show notification",
-  "toast-demo-message": "Hello World"
+  "login-as": "Login as ",
+  "logout": "Logout",
+  "logged-in-as": "Logged in as ",
+  "failed-login": "Failed to login",
+  "logged-out": "Logged out",
+
+  "courses": "Courses",
+  "students": "Students",
+
+  "no-registered-courses": "No registered courses",
+  "register-class": "Register class",
+
+  "no-enrolled-students": "No enrolled students",
+  "enroll-student": "Enroll student",
+  "my-enrollments": "My active enrollments",
+  "my-completions": "Completed courses",
+  "share-link": "Share link",
+  "showing-for": "Showing for",
+
+  "search": "Search",
+  "search-student": "Search student"
 }

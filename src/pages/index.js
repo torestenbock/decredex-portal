@@ -1,6 +1,9 @@
 import React from 'react'
 
+import Router from 'next/router'
+
 import { useTranslation } from 'i18n'
+import { useAppContext } from 'context'
 import { useSnackbar } from 'notistack'
 
 import MinimalLayout from 'layouts/minimal'
@@ -57,6 +60,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row'
   },
+  contentFormLoginButtonGroup: {
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  contentFormLoginButton: {
+    margin: theme.spacing(1)
+  },
 
   footer: {
     height: 84,
@@ -68,7 +80,73 @@ const useStyles = makeStyles((theme) => ({
 const Index = (props) => {
   const classes = useStyles()
   const {enqueueSnackbar} = useSnackbar()
+  const [context, dispatch] = useAppContext()
   const [t, i18n] = useTranslation(['common'])
+
+
+
+  const handleLogin = (id, event) => {
+    event.preventDefault()
+
+    switch (id) {
+      case 1:
+        enqueueSnackbar(t("common:logged-in-as")+" 'Institution A'", { variant: 'success' })
+        dispatch({
+          type: "CHANGE_ACCOUNT",
+          value: {name: 'Institution A', id: 1}
+        })
+        Router.push('/institution')
+        break
+
+      case 2:
+        enqueueSnackbar(t("common:logged-in-as")+" 'Government A'", { variant: 'success' })
+        dispatch({
+          type: "CHANGE_ACCOUNT",
+          value: {name: 'Government A', id: 2}
+        })
+        Router.push('/lookup')
+        break
+
+      case 3:
+        enqueueSnackbar(t("common:logged-in-as")+" 'Workplace A'", { variant: 'success' })
+        dispatch({
+          type: "CHANGE_ACCOUNT",
+          value: {name: 'Workplace A', id: 3}
+        })
+        Router.push('/lookup')
+        break
+
+      case 4:
+        enqueueSnackbar(t("common:logged-in-as")+" 'Student 1'", { variant: 'success' })
+        dispatch({
+          type: "CHANGE_ACCOUNT",
+          value: {name: 'Student 1', id: 4}
+        })
+        Router.push('/student')
+        break
+
+      case 5:
+        enqueueSnackbar(t("common:logged-in-as")+" 'Student 2'", { variant: 'success' })
+        dispatch({
+          type: "CHANGE_ACCOUNT",
+          value: {name: 'Student 2', id: 5}
+        })
+        Router.push('/student')
+        break
+
+      case 6:
+        enqueueSnackbar(t("common:logged-in-as")+" 'Student 3'", { variant: 'success' })
+        dispatch({
+          type: "CHANGE_ACCOUNT",
+          value: {name: 'Student 3', id: 6}
+        })
+        Router.push('/student')
+        break
+
+      default:
+        enqueueSnackbar(t("common:failed-login"), { variant: 'error' })
+    }
+  }
 
 
   return (
@@ -93,23 +171,71 @@ const Index = (props) => {
               <Typography color="textSecondary" gutterBottom>
                 {t('common:made-by')}: <a href="https://www.torestenbock.com">Tore Stenbock</a>
               </Typography>
-            </div>
+            </div> {/* classes.contentHeaderText */}
           </div> {/* classes.contentHeader */}
 
           <div className={classes.contentBody}>
-          <Button
-            fullWidth variant="contained"
-            className={classes.contentFormLoginButton}
-            color="primary" size="large"
-            onClick={() => enqueueSnackbar(t("common:toast-demo-message"), { variant: 'success' })}>
-              {t('common:toast-demo')}
-          </Button>
+            <div className={classes.contentFormLoginButtonGroup}>
+              <Button
+                className={classes.contentFormLoginButton}
+                fullWidth variant="contained"
+                color="primary" size="large"
+                onClick={(e) => handleLogin(1, e)}>
+                  {t('common:login-as')} Institution A
+              </Button>
+            </div> {/* classes.contentFormLoginButtonGroup */}
+            <div className={classes.contentFormLoginButtonGroup}>
+              <Button
+                className={classes.contentFormLoginButton}
+                fullWidth variant="contained"
+                color="primary" size="large"
+                onClick={(e) => handleLogin(4, e)}>
+                  {t('common:login-as')} Student 1
+              </Button>
+              <Button
+                className={classes.contentFormLoginButton}
+                fullWidth variant="contained"
+                color="primary" size="large"
+                onClick={(e) => handleLogin(5, e)}>
+                  {t('common:login-as')} Student 2
+              </Button>
+              <Button
+                className={classes.contentFormLoginButton}
+                fullWidth variant="contained"
+                color="primary" size="large"
+                onClick={(e) => handleLogin(6, e)}>
+                  {t('common:login-as')} Student 3
+              </Button>
+            </div> {/* classes.contentFormLoginButtonGroup */}
+
+            <div style={{width: "124px"}} />
+
+            <div className={classes.contentFormLoginButtonGroup}>
+              <Button
+                className={classes.contentFormLoginButton}
+                fullWidth variant="contained"
+                color="primary" size="large"
+                onClick={(e) => handleLogin(2, e)}>
+                  {t('common:login-as')} Government A
+              </Button>
+            </div> {/* classes.contentFormLoginButtonGroup */}
+            <div className={classes.contentFormLoginButtonGroup}>
+              <Button
+                className={classes.contentFormLoginButton}
+                fullWidth variant="contained"
+                color="primary" size="large"
+                onClick={(e) => handleLogin(3, e)}>
+                  {t('common:login-as')} Workplace A
+              </Button>
+            </div> {/* classes.contentFormLoginButtonGroup */}
           </div> {/* classes.contentBody */}
 
-        </div>
+        </div> {/* classes.body */}
+
         <div className={classes.footer}>
         </div>
-      </div>
+
+      </div> {/* classes.root */}
     </MinimalLayout>
   )
 }

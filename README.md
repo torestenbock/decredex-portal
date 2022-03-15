@@ -1,3 +1,5 @@
 # Decredex Next.js Application
-Portal implementation for the decredex demo application
+Portal implementation for the decredex demo application as presented to SDA bocconi - School of Management.  
+Watch [Vimeo](https://vimeo.com/554742238) for full talk.
+
 Author: [Tore Stenbock](torestenbock.com)
